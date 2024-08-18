@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+</head>
+<script>
+  async function login(event){
+    event.preventDefault();
+
+    const formData = new FormData();
+    const data = Object.fromEntries(formData.entries());
+
+    try {
+        const response = await fetch('/login',{
+        method: 'POST',
+        headers:{
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(data)
+    });
+
+    const result = await response.json();
+
+    if(response.ok){
+        alert('Login successful!');
+        window.location.href = '/movies';
+    }else{
+        alert('Error, Unable to login');
+    }
+    } catch (error) {
+        console.error('Error:',error);
+        alert('Error, Unable to login');
+    }
+}
+window.login = login;
+</script>
+<body>
+    <main>
+        <h1>Login here</h1>
+     <form onsubmit="login(event)">
+        <label for="email">Email</label>
+        <input type="email" name="email" id="email" required autocomplete="off">
+        <br>
+        <label for="password">Password</label>
+        <input type="password" name="password" id="password" required autocomplete="off">
+         <br>
+         <input type="submit" value="Login" class="login-button">
+        
+     </form>
+     <p>New user? <a class="signUp-button" href="/SignUp">SignUp here!</a></p>
+     <script src="login.js"></script>
+    </main>
+
+</body>
+</html>
