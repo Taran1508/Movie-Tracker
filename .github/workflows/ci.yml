@@ -26,7 +26,7 @@ jobs:
         run: npm install
   
       - name: Run backend tests
-        run: npm run test-backend  # Run backend tests without database
+        run: npm run test:backend  # Run backend tests without database
   
       - name: Run frontend tests
-        run: npm run test-frontend    
+        run: npm run test:frontend    
