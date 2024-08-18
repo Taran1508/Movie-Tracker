@@ -1,0 +1,4 @@
+{
+    "spec": "__tests__/backend/**/*.js"
+  }
+  

@@ -24,6 +24,12 @@ app.get('/',(req,res)=>{
     res.sendFile(path.join(__dirname,'../frontend/public/index.html'));
 })
 
-app.listen(PORT,()=>{
-    console.log(`server is started on ${PORT}`);
-});
+let server; // Keep a reference to the server
+
+if (process.env.NODE_ENV !== 'test') {
+  server = app.listen(PORT, () => {
+    console.log(`Server is started on ${PORT}`);
+  });
+}
+
+module.exports = { app, server }; 

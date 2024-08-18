@@ -34,6 +34,11 @@ setupFiles: ['<rootDir>/jest.setup.js'],
       testMatch: ['**/__tests__/frontend/**/*.test.js'],
     },
   ],
+  transform: {
+    "^.+\\.[jt]sx?$": "babel-jest",
+  },
+  globalSetup: './__tests__/globalSetup.js', // Adjust the path as needed
+  globalTeardown: './__tests__/globalTeardown.js', 
 };
 
 module.exports = config;
